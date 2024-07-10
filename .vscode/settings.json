@@ -1,0 +1,88 @@
+{
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.autoIndent": "full",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.markdownlint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 120],
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.map": true,
+    "**/CVS": true,
+    "**/obj": true
+  },
+  "html.format.enable": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "html.format.wrapLineLength": 100,
+  "json.format.enable": true,
+  "todo-tree.general.statusBar": "total",
+  "todo-tree.general.tags": ["ADD", "DEPRECATED", "DOC", "FIXME", "REFACTOR", "REMOVE", "TODO"],
+  "todo-tree.highlights.customHighlight": {
+    "ADD": {
+      "background": "#D4E5FF",
+      "foreground": "#071D41",
+      "icon": "diff-added",
+      "iconColour": "#155BCB"
+    },
+    "DEPRECATED": {
+      "background": "#FDE0DB",
+      "foreground": "#5C1111",
+      "icon": "trash",
+      "iconColour": "#E52207"
+    },
+    "DOC": {
+      "background": "#E3F5E1",
+      "foreground": "#19311E",
+      "icon": "book",
+      "iconColour": "#168821"
+    },
+    "FIXME": {
+      "background": "#FDE0DB",
+      "foreground": "#E52207",
+      "icon": "bug",
+      "iconColour": "#5C1111"
+    },
+    "REFACTOR": {
+      "background": "#FFF5C2",
+      "foreground": "#422D19",
+      "icon": "code",
+      "iconColour": "#FFCD07"
+    },
+    "REMOVE": {
+      "background": "#FDE0DB",
+      "foreground": "#5C1111",
+      "icon": "diff-removed",
+      "iconColour": "#E52207"
+    },
+    "TODO": {
+      "background": "#D4E5FF",
+      "foreground": "#071D41",
+      "icon": "tasklist",
+      "iconColour": "#155BCB"
+    }
+  },
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true
+  },
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.tree.scanAtStartup": true,
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showCountsInTree": true
+}

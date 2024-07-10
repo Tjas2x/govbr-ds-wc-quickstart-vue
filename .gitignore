@@ -1,0 +1,5 @@
+node_modules
+public
+report-commitlint.txt
+report-markdownlint.txt
+src/assets/README.md

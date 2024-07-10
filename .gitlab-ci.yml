@@ -1,0 +1,83 @@
+image: node:20.11.0-alpine
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - Qualidade
+  - Dependências
+  - Pages
+  - Release
+
+Instalar Dependências:
+  stage: Dependências
+  when: always
+  script:
+    - apk --no-cache add git
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 hour
+  rules:
+    - when: always
+
+Markdown:
+  stage: Qualidade
+  artifacts:
+    when: always
+    paths:
+      - report-markdownlint.txt
+    expire_in: 1 week
+    expose_as: "Markdownlint Report"
+  before_script:
+    - npm i -g markdownlint-cli
+  script:
+    - markdownlint '**/*.md' -o report-markdownlint.txt
+  rules:
+    - when: always
+
+Commits:
+  stage: Qualidade
+  artifacts:
+    when: always
+    paths:
+      - report-commitlint.txt
+    expire_in: 1 week
+    expose_as: "Commitlint Report"
+  script:
+    - npx commitlint-gitlab-ci -x @govbr-ds/commitlint-config > report-commitlint.txt
+  rules:
+    - when: always
+
+pages:
+  stage: Pages
+  needs: ["Instalar Dependências"]
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 day
+    expose_as: "Quickstart Vue Build"
+  script:
+    - rm -rf public
+    - npm run build
+  only:
+    - main
+
+Semantic Release:
+  stage: Release
+  environment:
+    name: production
+  when: manual
+  needs: ["pages"]
+  before_script:
+    - apk --no-cache add git zip
+    - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+  script:
+    - npx semantic-release
+  only:
+    - main
+    - next
+    - /\d.(\d|x).(\d|x)(-alpha)?$/
+    - /alpha$/

@@ -1,0 +1,16 @@
+**/*.snap
+**/dist
+**/node_modules
+**/package-lock.json
+**/*.hbs
+**/*.jpg
+**/*.jpeg
+**/*.png
+**/*.gif
+**/*.tiff
+**/*.bmp
+**/*.svg
+**/*.webp
+**/*.raw
+.editorconfig
+*.md
